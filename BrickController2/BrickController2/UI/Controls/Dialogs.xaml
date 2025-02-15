@@ -44,17 +44,17 @@
 
             <!-- Input dialog -->
             <ContentView x:Name="InputDialog" IsVisible="false" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All">
-                <Frame x:Name="InputDialogFrame" Style="{StaticResource DialogFrameStyle}" HorizontalOptions="Center" VerticalOptions="Start" WidthRequest="280" Margin="0,10,0,0" Padding="20">
+                <Frame x:Name="InputDialogFrame" Style="{StaticResource DialogFrameStyle}" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="280" Padding="20">
                     <StackLayout Orientation="Vertical">
                         <Entry x:Name="InputDialogEntry" HorizontalOptions="FillAndExpand"/>
-                        <BoxView Style="{StaticResource DividerBoxViewStyle}" Margin="0,16,0,16"/>
+                        <BoxView Style="{StaticResource DividerBoxViewStyle}" Margin="0,16,0,0"/>
                         <Grid ColumnSpacing="6">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <Button x:Name="InputDialogPositiveButton" Grid.Column="0" BackgroundColor="{DynamicResource PositiveColor}"/>
-                            <Button x:Name="InputDialogNegativeButton" Grid.Column="1" BackgroundColor="{DynamicResource NegativeColor}"/>
+                            <Button x:Name="InputDialogNegativeButton" Grid.Column="0" BackgroundColor="{DynamicResource NegativeColor}"/>
+                            <Button x:Name="InputDialogPositiveButton" Grid.Column="1" BackgroundColor="{DynamicResource PositiveColor}"/>
                         </Grid>
                     </StackLayout>
                 </Frame>
