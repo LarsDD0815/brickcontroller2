@@ -15,9 +15,10 @@
                 <Frame x:Name="MessageBoxFrame" Style="{StaticResource DialogFrameStyle}" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="280" Padding="20">
                     <StackLayout Orientation="Vertical">
                         <Label x:Name="MessageBoxTitle" HorizontalOptions="Center" FontAttributes="Bold" FontSize="Large"/>
+                        <BoxView Style="{StaticResource DividerBoxViewStyle}" Margin="0,16,0,0"/>
                         <Label x:Name="MessageBoxMessage" HorizontalOptions="Center"/>
-                        <BoxView Style="{StaticResource DividerBoxViewStyle}" Margin="0,16,0,16"/>
-                        <Button x:Name="MessageBoxButton"/>
+                        <BoxView Style="{StaticResource DividerBoxViewStyle}" Margin="0,16,0,0"/>
+                        <Button x:Name="MessageBoxButton" BackgroundColor="{DynamicResource PositiveColor}"/>
                     </StackLayout>
                 </Frame>
             </ContentView>
