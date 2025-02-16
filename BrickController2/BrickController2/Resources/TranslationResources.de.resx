@@ -247,7 +247,7 @@
     <value>Dunkel</value>
   </data>
   <data name="DefaultProfile" xml:space="preserve">
-    <value>Grundprofil</value>
+    <value>Standard Controller-Profil</value>
   </data>
   <data name="Deleting" xml:space="preserve">
     <value>Löschen...</value>

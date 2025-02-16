@@ -51,7 +51,6 @@
                   AbsoluteLayout.LayoutFlags="All">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
-                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
                 <!-- Creation list -->
@@ -101,8 +100,7 @@
                                                FontAttributes="Bold"
                                                VerticalOptions="CenterAndExpand"/>
                                     </Grid>
-                                    <BoxView Style="{StaticResource DividerBoxViewStyle}"
-                                             Margin="6,6,6,0"/>
+                                    <BoxView Style="{StaticResource DividerBoxViewStyle}"/>
                                 </VerticalStackLayout>
                             </SwipeView>
                         </DataTemplate>

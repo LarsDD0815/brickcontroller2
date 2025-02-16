@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<local:PageBase 
+<local:PageBase
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:controls="clr-namespace:BrickController2.UI.Controls"
@@ -8,70 +8,116 @@
     xmlns:local="clr-namespace:BrickController2.UI.Pages"
     x:Class="BrickController2.UI.Pages.CreationPage"
     x:Name="Page"
-    Title="{extensions:Translate Creation}"
+    Title="{Binding Creation.Name}"
     ios:Page.UseSafeArea="True"
     BackgroundColor="{DynamicResource PageBackgroundColor}">
 
     <NavigationPage.TitleView>
         <Grid HorizontalOptions="FillAndExpand">
-            <Label Text="{extensions:Translate Creation}" TextColor="{DynamicResource NavigationBarItemColor}" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="Start" VerticalOptions="Center"/>
-            <StackLayout Orientation="Horizontal" HorizontalOptions="End" Margin="12,0" Spacing="12">
-                <controls:ImageButton ImageSource="{extensions:ImageResource Source=ic_import.png}" Command="{Binding ImportControllerProfileCommand}" Style="{StaticResource NavigationBarImageButtonStyle}" IsVisible="{Binding SharedFileStorageService.IsSharedStorageAvailable}"/>
-                <controls:ImageButton ImageSource="{extensions:ImageResource Source=ic_export.png}" Command="{Binding ExportCreationCommand}" Style="{StaticResource NavigationBarImageButtonStyle}" IsVisible="{Binding SharedFileStorageService.IsSharedStorageAvailable}"/>
+            <Label Text="{Binding Creation.Name}"
+                   TextColor="{DynamicResource NavigationBarItemColor}"
+                   FontSize="Medium"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Start"
+                   VerticalOptions="Center"/>
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="End"
+                         Spacing="12">
+                <controls:ImageButton ImageSource="{extensions:ImageResource Source=ic_import.png}"
+                                      Command="{Binding ImportControllerProfileCommand}"
+                                      Style="{StaticResource NavigationBarImageButtonStyle}"
+                                      IsVisible="{Binding SharedFileStorageService.IsSharedStorageAvailable}"/>
+                <controls:ImageButton ImageSource="{extensions:ImageResource Source=ic_export.png}"
+                                      Command="{Binding ExportCreationCommand}"
+                                      Style="{StaticResource NavigationBarImageButtonStyle}"
+                                      IsVisible="{Binding SharedFileStorageService.IsSharedStorageAvailable}"/>
+                <controls:ImageButton ImageSource="{extensions:ImageResource Source=ic_edit.png}"
+                                      Command="{Binding RenameCreationCommand}"
+                                      Style="{StaticResource NavigationBarImageButtonStyle}"/>
             </StackLayout>
         </Grid>
     </NavigationPage.TitleView>
 
     <local:PageBase.Content>
-        <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-            <Grid RowSpacing="0" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All">
+        <AbsoluteLayout HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand">
+            <Grid RowSpacing="0"
+                  AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                  AbsoluteLayout.LayoutFlags="All">
+
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="80"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <!-- Header -->
-                <Grid Grid.Row="0" Style="{StaticResource HeaderGridStyle}">
-                    <Label Text="{Binding Creation.Name}" TextColor="{DynamicResource EditableTextColor}" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Start" VerticalOptions="Center">
-                        <Label.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding RenameCreationCommand}"/>
-                        </Label.GestureRecognizers>
-                    </Label>
-                    <controls:FloatingActionButton ButtonColor="Green" ImageSource="{extensions:ImageResource Source=ic_play.png}" ImageColor="White" Command="{Binding PlayCommand}" HorizontalOptions="End" VerticalOptions="Center"/>
+                <Grid Grid.Row="0"
+                      HorizontalOptions="Center"
+                      VerticalOptions="Center">
+                    <controls:FloatingActionButton ButtonColor="Green"
+                                                   ImageSource="{extensions:ImageResource Source=ic_play.png}"
+                                                   ImageColor="White"
+                                                   Command="{Binding PlayCommand}"
+                                                   HorizontalOptions="End"
+                                                   VerticalOptions="Center"/>
                 </Grid>
 
+                <BoxView Grid.Row="1"
+                         Style="{StaticResource DividerBoxViewStyle}"/>
+
                 <!-- Controller profile list -->
-                <CollectionView Grid.Row="1" ItemsSource="{Binding Creation.ControllerProfiles}" SelectionMode="None">
+                <CollectionView Grid.Row="2"
+                                ItemsSource="{Binding Creation.ControllerProfiles}"
+                                SelectionMode="None">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <SwipeView>
-                                <SwipeView.LeftItems>
+                                <SwipeView.RightItems>
                                     <SwipeItems Mode="Execute">
-                                        <SwipeItem Text="{extensions:Translate Delete}" IconImageSource="{extensions:ImageResource Source=ic_delete.png}" BackgroundColor="{DynamicResource DeleteSwipeItemBackgroundColor}" Command="{Binding BindingContext.DeleteControllerProfileCommand, Source={x:Reference Page}}" CommandParameter="{Binding .}"/>
+                                        <SwipeItem Text="{extensions:Translate Delete}"
+                                                   IconImageSource="{extensions:ImageResource Source=ic_delete.png}"
+                                                   BackgroundColor="{DynamicResource DeleteSwipeItemBackgroundColor}"
+                                                   Command="{Binding BindingContext.DeleteControllerProfileCommand, Source={x:Reference Page}}"
+                                                   CommandParameter="{Binding .}"/>
                                     </SwipeItems>
-                                </SwipeView.LeftItems>
+                                </SwipeView.RightItems>
                                 <VerticalStackLayout>
-                                    <Grid Style="{StaticResource CollectionItemGridStyle}">
+                                     <Grid Style="{StaticResource CollectionItemGridStyle}"
+                                          Margin="0,0">
                                         <Grid.GestureRecognizers>
-                                            <TapGestureRecognizer Command="{Binding BindingContext.ControllerProfileTappedCommand, Source={x:Reference Page}}" CommandParameter="{Binding .}"/>
+                                            <TapGestureRecognizer Command="{Binding BindingContext.ControllerProfileTappedCommand, Source={x:Reference Page}}"
+                                                                  CommandParameter="{Binding .}"/>
                                         </Grid.GestureRecognizers>
-                                        <Label Text="{Binding Name}" FontSize="Large" FontAttributes="Bold"/>
+                                        <Label Text="{Binding Name}"
+                                               FontSize="Large"
+                                               FontAttributes="Bold"/>
                                     </Grid>
-                                    <BoxView Style="{StaticResource DividerBoxViewStyle}" Margin="6,6,6,0"/>
+                                    <BoxView Style="{StaticResource DividerBoxViewStyle}"/>
                                 </VerticalStackLayout>
                             </SwipeView>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                     <CollectionView.EmptyView>
-                        <Label Text="{extensions:Translate AddControllerProfiles}" Style="{StaticResource CollectionViewEmptyLabelStyle}"/>
+                        <Label Text="{extensions:Translate AddControllerProfiles}"
+                               Style="{StaticResource CollectionViewEmptyLabelStyle}"/>
                     </CollectionView.EmptyView>
                 </CollectionView>
 
-                <controls:FloatingActionButton Grid.Row="0" Grid.RowSpan="2" ButtonColor="Red" ImageSource="{extensions:ImageResource Source=ic_add.png}" ImageColor="White" Command="{Binding AddControllerProfileCommand}" HorizontalOptions="End" VerticalOptions="End" Margin="10"/>
+                <controls:FloatingActionButton Grid.Row="0"
+                                               Grid.RowSpan="3"
+                                               ButtonColor="Red"
+                                               ImageSource="{extensions:ImageResource Source=ic_add.png}"
+                                               ImageColor="White"
+                                               Command="{Binding AddControllerProfileCommand}"
+                                               HorizontalOptions="End"
+                                               VerticalOptions="End"
+                                               Margin="10"/>
 
             </Grid>
 
-            <controls:Dialogs x:Name="Dialogs" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All"/>
+            <controls:Dialogs x:Name="Dialogs"
+                              AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                              AbsoluteLayout.LayoutFlags="All"/>
 
         </AbsoluteLayout>
     </local:PageBase.Content>
