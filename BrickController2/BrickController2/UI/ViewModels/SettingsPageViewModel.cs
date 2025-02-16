@@ -22,13 +22,17 @@ namespace BrickController2.UI.ViewModels
             INavigationService navigationService,
             ITranslationService translationService,
             IDialogService dialogService,
-            IThemeService themeService) : 
+            IThemeService themeService) :
             base(navigationService, translationService)
         {
             _themeService = themeService;
             _dialogService = dialogService;
 
             SelectThemeCommand = new SafeCommand(async () => await SelectThemeAsync());
+            NavigateToDevicesCommand = new SafeCommand(async () => await NavigationService.NavigateToAsync<DeviceListPageViewModel>());
+            NavigateToControllerTesterCommand = new SafeCommand(async () => await NavigationService.NavigateToAsync<ControllerTesterPageViewModel>());
+            NavigateToAboutCommand = new SafeCommand(async () => await NavigationService.NavigateToAsync<AboutPageViewModel>());
+
         }
 
         public ThemeType CurrentTheme
@@ -45,6 +49,9 @@ namespace BrickController2.UI.ViewModels
         }
 
         public ICommand SelectThemeCommand { get; }
+        public ICommand NavigateToDevicesCommand { get; }
+        public ICommand NavigateToControllerTesterCommand { get; }
+        public ICommand NavigateToAboutCommand { get; }
 
         public override void OnAppearing()
         {
