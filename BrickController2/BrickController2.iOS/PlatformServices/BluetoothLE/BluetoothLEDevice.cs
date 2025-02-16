@@ -183,7 +183,7 @@ namespace BrickController2.iOS.PlatformServices.BluetoothLE
                 var nativeCharacteristic = ((GattCharacteristic)characteristic).Characteristic;
                 var nativeData = NSData.FromArray(data);
 
-                _peripheral.WriteValue(nativeData, nativeCharacteristic, CBCharacteristicWriteType.WithoutResponse);
+                _peripheral.WriteValue(nativeData, nativeCharacteristic, CBCharacteristicWriteType.WithResponse);
                 return Task.FromResult(true);
             }
         }
