@@ -49,14 +49,10 @@
             <Grid RowSpacing="0"
                   AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
                   AbsoluteLayout.LayoutFlags="All">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
 
                 <!-- Creation list -->
                 <CollectionView Grid.Row="0"
-                                ItemsSource="{Binding Creations}"
-                                SelectionMode="None">
+                                ItemsSource="{Binding Creations}">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <SwipeView>
@@ -72,33 +68,24 @@
                                 <VerticalStackLayout>
                                     <Grid Style="{StaticResource CollectionItemGridStyle}"
                                           Margin="0,0">
-                                        <Grid.GestureRecognizers>
-                                            <TapGestureRecognizer Command="{Binding BindingContext.CreationTappedCommand, Source={x:Reference Page}}"
-                                                                  CommandParameter="{Binding .}"/>
-                                        </Grid.GestureRecognizers>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto"/>
-                                            <ColumnDefinition Width="*"/>
-                                        </Grid.ColumnDefinitions>
-                                        <Frame Grid.Column="0"
-                                               WidthRequest="40"
-                                               HeightRequest="40"
-                                               BackgroundColor="{Binding Id, Converter={StaticResource IntToColor}}"
-                                               CornerRadius="20"
-                                               Padding="0"
-                                               HasShadow="False"
-                                               VerticalOptions="Center">
-                                            <Label Text="{Binding Name, Converter={StaticResource TextToCapitalInitial}}"
-                                                   TextColor="White"
-                                                   FontSize="Medium"
-                                                   HorizontalOptions="Center"
-                                                   VerticalOptions="Center"/>
-                                        </Frame>
-                                        <Label Grid.Column="1"
-                                               Text="{Binding Name}"
-                                               FontSize="Large"
-                                               FontAttributes="Bold"
-                                               VerticalOptions="CenterAndExpand"/>
+                                        <Label
+                                            Text="{Binding Name}"
+                                            FontSize="Large"
+                                            FontAttributes="Bold"
+                                            HorizontalOptions="FillAndExpand"
+                                            VerticalOptions="CenterAndExpand">
+                                            <Label.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding BindingContext.CreationTappedCommand, Source={x:Reference Page}}"
+                                                                      CommandParameter="{Binding .}"/>
+                                            </Label.GestureRecognizers>
+                                        </Label>
+                                        <controls:ImageButton
+                                            HorizontalOptions="End"
+                                            VerticalOptions="FillAndExpand"
+                                            ImageSource="{extensions:ImageResource Source=ic_play.png}"
+                                            Style="{StaticResource CreationPlayButtonStyle}"
+                                            Command="{Binding BindingContext.PlayCommand, Source={x:Reference Page}}"
+                                            CommandParameter="{Binding .}"/>
                                     </Grid>
                                     <BoxView Style="{StaticResource DividerBoxViewStyle}"/>
                                 </VerticalStackLayout>

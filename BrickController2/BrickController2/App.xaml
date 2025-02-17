@@ -184,5 +184,11 @@
             <Setter Property="TextColor" Value="{DynamicResource PrimaryTextColor}"/>
         </Style>
 
+        <Style x:Key="CreationPlayButtonStyle" TargetType="controls:ImageButton">
+            <Setter Property="WidthRequest" Value="25"/>
+            <Setter Property="HeightRequest" Value="25"/>
+            <Setter Property="ImageColor" Value="Green"/>
+        </Style>
+
     </Application.Resources>
 </Application>

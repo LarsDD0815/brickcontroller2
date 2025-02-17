@@ -15,6 +15,10 @@ using BrickController2.UI.Services.Dialog;
 using BrickController2.UI.Services.Translation;
 using BrickController2.PlatformServices.Permission;
 
+
+using BrickController2.BusinessLogic;
+using System.IO;
+
 namespace BrickController2.UI.ViewModels
 {
     public class CreationListPageViewModel : PageViewModelBase
@@ -22,6 +26,8 @@ namespace BrickController2.UI.ViewModels
         private readonly ICreationManager _creationManager;
         private readonly IDeviceManager _deviceManager;
         private readonly IDialogService _dialogService;
+        private readonly IPlayLogic _playLogic;
+
         private readonly IBluetoothPermission _bluetoothPermission;
         private readonly IReadWriteExternalStoragePermission _readWriteExternalStoragePermission;
 
@@ -36,6 +42,8 @@ namespace BrickController2.UI.ViewModels
 
         public CreationListPageViewModel(
             INavigationService navigationService,
+                        IPlayLogic playLogic,
+
             ITranslationService translationService,
             ICreationManager creationManager,
             IDeviceManager deviceManager,
@@ -49,6 +57,8 @@ namespace BrickController2.UI.ViewModels
             _deviceManager = deviceManager;
             _dialogService = dialogService;
             _bluetoothPermission = bluetoothPermission;
+            _playLogic = playLogic;
+
             _readWriteExternalStoragePermission = readWriteExternalStoragePermission;
             SharedFileStorageService = sharedFileStorageService;
 
@@ -61,6 +71,7 @@ namespace BrickController2.UI.ViewModels
             NavigateToControllerTesterCommand = new SafeCommand(async () => await NavigationService.NavigateToAsync<ControllerTesterPageViewModel>());
             NavigateToSequencesCommand = new SafeCommand(async () => await NavigationService.NavigateToAsync<SequenceListPageViewModel>());
             NavigateToAboutCommand = new SafeCommand(async () => await NavigationService.NavigateToAsync<AboutPageViewModel>());
+            PlayCommand = new SafeCommand<Creation>(async creation => await PlayAsync(creation));
         }
 
         public ObservableCollection<Creation> Creations => _creationManager.Creations;
@@ -76,6 +87,7 @@ namespace BrickController2.UI.ViewModels
         public ICommand NavigateToControllerTesterCommand { get; }
         public ICommand NavigateToSequencesCommand { get; }
         public ICommand NavigateToAboutCommand { get; }
+        public ICommand PlayCommand { get; }
 
         public override async void OnAppearing()
         {
@@ -274,6 +286,46 @@ namespace BrickController2.UI.ViewModels
                         async (progressDialog, token) => await _creationManager.DeleteCreationAsync(creation),
                         Translate("Deleting"),
                         token: _disappearingTokenSource?.Token ?? default);
+                }
+            }
+            catch (OperationCanceledException)
+            {
+            }
+        }
+
+        private async Task PlayAsync(Creation creation)
+        {
+            try
+            {
+                var validationResult = _playLogic.ValidateCreation(creation);
+
+                string warning = string.Empty;
+                switch (validationResult)
+                {
+                    case CreationValidationResult.MissingControllerAction:
+                        warning = Translate("NoControllerActions");
+                        break;
+
+                    case CreationValidationResult.MissingDevice:
+                        warning = Translate("MissingDevices");
+                        break;
+
+                    case CreationValidationResult.MissingSequence:
+                        warning = Translate("MissingSequence");
+                        break;
+                }
+
+                if (validationResult == CreationValidationResult.Ok)
+                {
+                    await NavigationService.NavigateToAsync<PlayerPageViewModel>(new NavigationParameters(("creation", creation)));
+                }
+                else
+                {
+                    await _dialogService.ShowMessageBoxAsync(
+                        Translate("Warning"),
+                        warning,
+                        Translate("Ok"),
+                        _disappearingTokenSource?.Token ?? default);
                 }
             }
             catch (OperationCanceledException)
