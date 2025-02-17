@@ -181,10 +181,10 @@
     <value>Blau</value>
   </data>
   <data name="BluetoothDevicesWillNOTBeAvailable" xml:space="preserve">
-    <value>Bluetooth-Geräte werden nicht verfügbar sein</value>
+    <value>Bluetooth-Geräte werden nicht verfügbar sein.</value>
   </data>
   <data name="BluetoothIsTurnedOff" xml:space="preserve">
-    <value>Bluetooth ist ausgeschaltet</value>
+    <value>Bluetooth ist ausgeschaltet.</value>
   </data>
   <data name="ButtonType" xml:space="preserve">
     <value>Tastenart</value>

@@ -13,52 +13,73 @@
 
     <NavigationPage.TitleView>
         <Grid HorizontalOptions="FillAndExpand">
-            <Label Text="{extensions:Translate About}" TextColor="{DynamicResource NavigationBarItemColor}" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="Start" VerticalOptions="Center"/>
+            <Label Text="{extensions:Translate About}"
+                    TextColor="{DynamicResource NavigationBarItemColor}"
+                    FontSize="Large"
+                    FontAttributes="Bold"
+                    HorizontalOptions="Start"
+                    VerticalOptions="Center"/>
         </Grid>
     </NavigationPage.TitleView>
 
     <local:PageBase.Content>
-        <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-            <Grid RowSpacing="0" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All">
+        <AbsoluteLayout HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand">
+            <Grid RowSpacing="0"
+                    AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                    AbsoluteLayout.LayoutFlags="All">
 
                 <!-- Body -->
                 <ScrollView>
-                    <VerticalStackLayout Padding="20" Spacing="6">
+                    <VerticalStackLayout Padding="20"
+                            Spacing="6">
 
-                        <Label Text="BrickController 2" FontSize="Medium" FontAttributes="Bold"/>
+                        <Label Text="BrickController 2"
+                                FontSize="Medium"
+                                FontAttributes="Bold"/>
 
                         <HorizontalStackLayout Spacing="6">
                             <Label Text="{extensions:Translate Version}  "/>
                             <Label Text="{Binding Version}"/>
                         </HorizontalStackLayout>
 
-                        <BoxView Style="{StaticResource DividerBoxViewStyle}" Margin="6,16,6,16"/>
+                        <BoxView Style="{StaticResource DividerBoxViewStyle}"
+                                Margin="6,16,6,16"/>
 
                         <Label Text="Copyright © 2024, István Murvai (SCN)"/>
 
-                        <BoxView Style="{StaticResource DividerBoxViewStyle}" Margin="6,16,6,16"/>
+                        <BoxView Style="{StaticResource DividerBoxViewStyle}"
+                                Margin="6,16,6,16"/>
 
-                        <Label Text="{extensions:Translate ExternalLibraries}" FontAttributes="Bold"/>
+                        <Label Text="{extensions:Translate ExternalLibraries}"
+                                FontAttributes="Bold"/>
                         <Label Text="Autofac"/>
                         <Label Text="SQLiteNetExtensionsAsync"/>
                         <Label Text="Microsoft.Maui"/>
                         <Label Text="Microsoft.Maui.Essentials"/>
 
-                        <BoxView Style="{StaticResource DividerBoxViewStyle}" Margin="6,16,6,16"/>
+                        <BoxView Style="{StaticResource DividerBoxViewStyle}"
+                                Margin="6,16,6,16"/>
 
-                        <Label Text="{extensions:Translate IconSet}" FontAttributes="Bold"/>
+                        <Label Text="{extensions:Translate IconSet}"
+                                FontAttributes="Bold"/>
                         <Label Text="FlatIcon"/>
 
-                        <BoxView Style="{StaticResource DividerBoxViewStyle}" Margin="6,16,6,16"/>
+                        <BoxView Style="{StaticResource DividerBoxViewStyle}"
+                                Margin="6,16,6,16"/>
 
-                        <Label Text="{extensions:Translate Disclaimer}" FontAttributes="Bold"/>
-                        <Label Text="LEGO® is a trademark of the LEGO Group of companies which does not sponsor, authorize or endorse this application" FontSize="Small"/>
+                        <Label Text="{extensions:Translate Disclaimer}"
+                                FontAttributes="Bold"/>
+                        <Label Text="LEGO® is a trademark of the LEGO Group of companies which does not sponsor, authorize or endorse this application"
+                                FontSize="Small"/>
 
                     </VerticalStackLayout>
                 </ScrollView>
             </Grid>
 
-            <controls:Dialogs x:Name="Dialogs" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All"/>
+            <controls:Dialogs x:Name="Dialogs"
+                    AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                    AbsoluteLayout.LayoutFlags="All"/>
 
         </AbsoluteLayout>
     </local:PageBase.Content>
