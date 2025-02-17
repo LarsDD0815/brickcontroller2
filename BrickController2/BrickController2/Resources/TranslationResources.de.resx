@@ -166,13 +166,16 @@
     <value>Wollen Sie diese Controllersaktion wirklich löschen?</value>
   </data>
   <data name="AxisCharacteristic" xml:space="preserve">
-    <value>Achseneigenschaften</value>
+    <value>Steuerverhalten</value>
+  </data>
+  <data name="AxisActiveZone" xml:space="preserve">
+    <value>aktive Zone</value>
   </data>
   <data name="AxisDeadZone" xml:space="preserve">
-    <value>Joy inaktive Zone</value>
+    <value>inaktive Zone</value>
   </data>
   <data name="AxisType" xml:space="preserve">
-    <value>Joy Typ</value>
+    <value>Steuerungstyp</value>
   </data>
   <data name="Battery" xml:space="preserve">
     <value>Batterie</value>
@@ -358,7 +361,7 @@
     <value>Schleife</value>
   </data>
   <data name="MaxOutput" xml:space="preserve">
-    <value>Max Leistung</value>
+    <value>Leistung</value>
   </data>
   <data name="Missing" xml:space="preserve">
     <value>Fehlt</value>
