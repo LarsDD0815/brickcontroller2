@@ -107,13 +107,13 @@
 
         <Style x:Key="CollectionViewHeaderGridStyle" TargetType="Grid">
             <Setter Property="BackgroundColor" Value="{DynamicResource CollectionViewHeaderBackgroundColor}"/>
-            <Setter Property="Padding" Value="10"/>
+            <Setter Property="Padding" Value="8,12"/>
             <Setter Property="ColumnSpacing" Value="6"/>
         </Style>
         
         <Style x:Key="CollectionItemGridStyle" TargetType="Grid">
             <Setter Property="BackgroundColor" Value="{DynamicResource PageBackgroundColor}"/>
-            <Setter Property="Padding" Value="16,12"/>
+            <Setter Property="Padding" Value="8,12"/>
             <Setter Property="ColumnSpacing" Value="6"/>
             <Setter Property="RowSpacing" Value="6"/>
         </Style>

@@ -32,7 +32,7 @@
     <local:PageBase.Content>
         <AbsoluteLayout HorizontalOptions="FillAndExpand"
                         VerticalOptions="FillAndExpand"
-                        Padding="16,12">
+                        Padding="8,12">
             <Grid RowSpacing="12"
                   AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
                   AbsoluteLayout.LayoutFlags="All">

@@ -208,7 +208,7 @@
     <value>Verbinden ...</value>
   </data>
   <data name="ConnectingTo" xml:space="preserve">
-    <value>Verbinden: </value>
+    <value>Verbinden</value>
   </data>
   <data name="Controller" xml:space="preserve">
     <value>Controller</value>
@@ -466,7 +466,10 @@
     <value>Einstellungen</value>
   </data>
   <data name="ShortChannel" xml:space="preserve">
-    <value>Ka</value>
+    <value>Kanal:</value>
+  </data>
+  <data name="Inverted" xml:space="preserve">
+    <value>invertiert:</value>
   </data>
   <data name="String1" xml:space="preserve">
     <value>Joy Aktive Zone</value>

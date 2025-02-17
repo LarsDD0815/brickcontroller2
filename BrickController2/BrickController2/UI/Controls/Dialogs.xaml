@@ -34,8 +34,7 @@
                         <Label x:Name="MessageBoxMessage"
                                HorizontalOptions="Center"
                                HorizontalTextAlignment="Center"/>
-                        <BoxView Style="{StaticResource DividerBoxViewStyle}"
-                                 Margin="0,16,0,0"/>
+                        <BoxView Style="{StaticResource DividerBoxViewStyle}"/>
                         <Button x:Name="MessageBoxButton"
                                 BackgroundColor="{DynamicResource PositiveColor}"/>
                     </StackLayout>
@@ -95,6 +94,10 @@
                         <BoxView Style="{StaticResource DividerBoxViewStyle}"
                                  Margin="0,16,0,0"/>
                         <Grid ColumnSpacing="6">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
                             <Button x:Name="InputDialogNegativeButton"
                                     Grid.Column="0"
                                     BackgroundColor="{DynamicResource NegativeColor}"/>
@@ -165,6 +168,8 @@
                                FontSize="Large"/>
                         <Label x:Name="ProgressDialogMessage"
                                HorizontalOptions="Center"/>
+                        <BoxView Style="{StaticResource DividerBoxViewStyle}"
+                                 Margin="0,16,0,16"/>
                         <ProgressBar x:Name="ProgressDialogProgressBar"
                                      HorizontalOptions="FillAndExpand"/>
                         <ActivityIndicator x:Name="ProgressDialogActivityIndicator"
@@ -201,6 +206,7 @@
                                FontAttributes="Bold"
                                FontSize="Large"/>
                         <Label x:Name="GameControllerEventDialogMessage"
+                               FontSize="Large"
                                HorizontalOptions="Center"
                                HorizontalTextAlignment="Center"/>
                         <BoxView Style="{StaticResource DividerBoxViewStyle}"

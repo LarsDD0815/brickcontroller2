@@ -51,7 +51,7 @@
                     <CollectionView.GroupHeaderTemplate>
                         <DataTemplate>
                             <SwipeView>
-                                <SwipeView.LeftItems>
+                                <SwipeView.RightItems>
                                     <SwipeItems Mode="Execute">
                                         <SwipeItem Text="{extensions:Translate Delete}"
                                                    IconImageSource="{extensions:ImageResource Source=ic_delete.png}"
@@ -59,7 +59,7 @@
                                                    Command="{Binding BindingContext.DeleteControllerEventCommand, Source={x:Reference Page}}"
                                                    CommandParameter="{Binding ControllerEvent}"/>
                                     </SwipeItems>
-                                </SwipeView.LeftItems>
+                                </SwipeView.RightItems>
                                 <Grid Style="{StaticResource CollectionViewHeaderGridStyle}">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto"/>
@@ -87,7 +87,7 @@
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <SwipeView>
-                                <SwipeView.LeftItems>
+                                <SwipeView.RightItems>
                                     <SwipeItems Mode="Execute">
                                         <SwipeItem Text="{extensions:Translate Delete}"
                                                    IconImageSource="{extensions:ImageResource Source=ic_delete.png}"
@@ -95,7 +95,7 @@
                                                    Command="{Binding BindingContext.DeleteControllerActionCommand, Source={x:Reference Page}}"
                                                    CommandParameter="{Binding ControllerAction}"/>
                                     </SwipeItems>
-                                </SwipeView.LeftItems>
+                                </SwipeView.RightItems>
                                 <Grid Style="{StaticResource CollectionItemGridStyle}">
                                     <Grid.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding BindingContext.ControllerActionTappedCommand, Source={x:Reference Page}}"
@@ -116,18 +116,20 @@
                                                            VerticalOptions="Center"
                                                            Margin="0,4"
                                                            Spacing="6">
-                                        <Label Text="{extensions:Translate Device}"/>
-                                        <Label Text=": "/>
                                         <Label Text="{Binding DeviceName}"
-                                               FontAttributes="Bold"/>
-                                        <Label Text="{extensions:Translate ShortChannel}"/>
-                                        <Label Text=": "/>
+                                               FontAttributes="Bold"
+                                               FontSize="Medium"/>
+                                        <Label Text="-"
+                                               FontSize="Medium"/>
+                                        <Label Text="{extensions:Translate ShortChannel}"
+                                               FontSize="Medium"/>
                                         <controls:DeviceChannelLabel DeviceType="{Binding DeviceType}"
                                                                      Channel="{Binding Channel}"
-                                                                     FontAttributes="Bold"/>
-                                        <Label Text=" - "/>
+                                                                     FontAttributes="Bold"
+                                                                     FontSize="Medium"/>
                                         <Label Text="{Binding InvertName}"
-                                               FontAttributes="Bold"/>
+                                               FontAttributes="Bold"
+                                               FontSize="Medium"/>
                                     </HorizontalStackLayout>
                                 </Grid>
                             </SwipeView>
