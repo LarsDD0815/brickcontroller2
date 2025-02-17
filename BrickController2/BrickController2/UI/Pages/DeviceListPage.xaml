@@ -43,7 +43,7 @@
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <SwipeView>
-                                <SwipeView.LeftItems>
+                                <SwipeView.RightItems>
                                     <SwipeItems Mode="Execute">
                                         <SwipeItem Text="{extensions:Translate Delete}"
                                                    IconImageSource="{extensions:ImageResource Source=ic_delete.png}"
@@ -51,7 +51,7 @@
                                                    Command="{Binding BindingContext.DeleteDeviceCommand, Source={x:Reference Page}}"
                                                    CommandParameter="{Binding .}"/>
                                     </SwipeItems>
-                                </SwipeView.LeftItems>
+                                </SwipeView.RightItems>
                                 <VerticalStackLayout>
                                     <Grid Style="{StaticResource CollectionItemGridStyle}">
                                         <Grid.GestureRecognizers>
@@ -74,8 +74,7 @@
                                                    FontSize="Micro"/>
                                         </VerticalStackLayout>
                                     </Grid>
-                                    <BoxView Style="{StaticResource DividerBoxViewStyle}"
-                                             Margin="6,6,6,0"/>
+                                    <BoxView Style="{StaticResource DividerBoxViewStyle}"/>
                                 </VerticalStackLayout>
                             </SwipeView>
                         </DataTemplate>

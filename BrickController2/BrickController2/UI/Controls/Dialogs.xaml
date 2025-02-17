@@ -59,12 +59,18 @@
                                HorizontalTextAlignment="Center"
                                FontAttributes="Bold"
                                FontSize="Large"/>
+                        <BoxView Style="{StaticResource DividerBoxViewStyle}"
+                                 Margin="0,16,0,0"/>
                         <Label x:Name="QuestionDialogMessage"
                                HorizontalOptions="Center"
                                HorizontalTextAlignment="Center"/>
                         <BoxView Style="{StaticResource DividerBoxViewStyle}"
                                  Margin="0,16,0,16"/>
                         <Grid ColumnSpacing="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
                             <Button x:Name="QuestionDialogNegativeButton"
                                     Grid.Column="0"
                                     BackgroundColor="{DynamicResource NegativeColor}"/>
@@ -93,7 +99,7 @@
                                HorizontalOptions="FillAndExpand"/>
                         <BoxView Style="{StaticResource DividerBoxViewStyle}"
                                  Margin="0,16,0,0"/>
-                        <Grid ColumnSpacing="6">
+                        <Grid ColumnSpacing="10">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
