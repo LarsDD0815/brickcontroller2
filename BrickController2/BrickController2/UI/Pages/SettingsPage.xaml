@@ -52,6 +52,7 @@
                        Grid.Row="0"
                        Text="{extensions:Translate Theme}"
                        FontSize="Large"
+                       FontAttributes="Bold"
                        VerticalOptions="Center"/>
                 <Button Grid.Column="1"
                         Grid.Row="0"
@@ -62,6 +63,7 @@
                        Grid.Row="1"
                        Text="{extensions:Translate Devices}"
                        FontSize="Large"
+                       FontAttributes="Bold"
                        VerticalOptions="Center">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding NavigateToDevicesCommand}"/>
@@ -81,6 +83,7 @@
                        Grid.Row="2"
                        Text="{extensions:Translate Controller}"
                        FontSize="Large"
+                       FontAttributes="Bold"
                        VerticalOptions="Center">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding NavigateToControllerTesterCommand}"/>
@@ -100,6 +103,7 @@
                        Grid.Row="3"
                        Text="{extensions:Translate About}"
                        FontSize="Large"
+                       FontAttributes="Bold"
                        VerticalOptions="Center">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding NavigateToAboutCommand}"/>
