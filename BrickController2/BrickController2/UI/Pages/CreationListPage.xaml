@@ -24,7 +24,7 @@
         <Grid HorizontalOptions="FillAndExpand">
             <Label Text="{extensions:Translate Creations}"
                    TextColor="{DynamicResource NavigationBarItemColor}"
-                   FontSize="Medium"
+                   FontSize="Large"
                    FontAttributes="Bold"
                    VerticalOptions="Center"/>
             <HorizontalStackLayout HorizontalOptions="End"
@@ -71,7 +71,6 @@
                                         <Label
                                             Text="{Binding Name}"
                                             FontSize="Large"
-                                            FontAttributes="Bold"
                                             HorizontalOptions="FillAndExpand"
                                             VerticalOptions="CenterAndExpand">
                                             <Label.GestureRecognizers>
