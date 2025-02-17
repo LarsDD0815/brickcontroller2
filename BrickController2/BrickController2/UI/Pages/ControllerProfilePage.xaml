@@ -22,41 +22,42 @@
 
     <NavigationPage.TitleView>
         <Grid HorizontalOptions="FillAndExpand">
-            <Label Text="{extensions:Translate ControllerProfile}" TextColor="{DynamicResource NavigationBarItemColor}" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="Start" VerticalOptions="Center"/>
-            <StackLayout Orientation="Horizontal" HorizontalOptions="End" Margin="12,0" Spacing="12">
-                <controls:ImageButton ImageSource="{extensions:ImageResource Source=ic_export.png}" Command="{Binding ExportControllerProfileCommand}" Style="{StaticResource NavigationBarImageButtonStyle}" IsVisible="{Binding SharedFileStorageService.IsSharedStorageAvailable}"/>
-            </StackLayout>
+            <Label Text="{extensions:Translate ControllerProfile}"
+                   TextColor="{DynamicResource NavigationBarItemColor}"
+                   FontSize="Large"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Start"
+                   VerticalOptions="Center"/>
         </Grid>
     </NavigationPage.TitleView>
 
     <local:PageBase.Content>
-        <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-            <Grid RowSpacing="0" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All">
+        <AbsoluteLayout HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand">
+            <Grid RowSpacing="0"
+                  AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                  AbsoluteLayout.LayoutFlags="All">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <!-- Header -->
-                <Grid Grid.Row="0" Style="{StaticResource HeaderGridStyle}">
-                    <Label Text="{Binding ControllerProfile.Name}" TextColor="{DynamicResource EditableTextColor}" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Start" VerticalOptions="Center">
-                        <Label.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding RenameProfileCommand}"/>
-                        </Label.GestureRecognizers>
-                    </Label>
-                    <controls:FloatingActionButton ButtonColor="Green" ImageSource="{extensions:ImageResource Source=ic_play.png}" ImageColor="White" Command="{Binding PlayCommand}" HorizontalOptions="End" VerticalOptions="Center"/>
-                </Grid>
-
                 <!-- Controller event list -->
-                <CollectionView Grid.Row="1" ItemsSource="{Binding ControllerEvents}" IsGrouped="True" SelectionMode="None">
-                    
+                <CollectionView Grid.Row="0"
+                                ItemsSource="{Binding ControllerEvents}"
+                                IsGrouped="True"
+                                SelectionMode="None">
+
                     <!-- Controller event -->
                     <CollectionView.GroupHeaderTemplate>
                         <DataTemplate>
                             <SwipeView>
                                 <SwipeView.LeftItems>
                                     <SwipeItems Mode="Execute">
-                                        <SwipeItem Text="{extensions:Translate Delete}" IconImageSource="{extensions:ImageResource Source=ic_delete.png}" BackgroundColor="{DynamicResource DeleteSwipeItemBackgroundColor}" Command="{Binding BindingContext.DeleteControllerEventCommand, Source={x:Reference Page}}" CommandParameter="{Binding ControllerEvent}"/>
+                                        <SwipeItem Text="{extensions:Translate Delete}"
+                                                   IconImageSource="{extensions:ImageResource Source=ic_delete.png}"
+                                                   BackgroundColor="{DynamicResource DeleteSwipeItemBackgroundColor}"
+                                                   Command="{Binding BindingContext.DeleteControllerEventCommand, Source={x:Reference Page}}"
+                                                   CommandParameter="{Binding ControllerEvent}"/>
                                     </SwipeItems>
                                 </SwipeView.LeftItems>
                                 <Grid Style="{StaticResource CollectionViewHeaderGridStyle}">
@@ -64,9 +65,18 @@
                                         <ColumnDefinition Width="Auto"/>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <controls:ColorImage Grid.Column="0" Source="{Binding ControllerEvent.EventType, Converter={StaticResource EventTypeToImage}}" Color="{DynamicResource PrimaryColor}" WidthRequest="30" HeightRequest="30" VerticalOptions="Center"/>
-                                    <StackLayout Grid.Column="1" Orientation="Horizontal" VerticalOptions="Center">
-                                        <Label Text="{Binding ControllerEvent.EventCode}" FontSize="Large" FontAttributes="Bold"/>
+                                    <controls:ColorImage Grid.Column="0"
+                                                         Source="{Binding ControllerEvent.EventType, Converter={StaticResource EventTypeToImage}}"
+                                                         Color="{DynamicResource PrimaryColor}"
+                                                         WidthRequest="30"
+                                                         HeightRequest="30"
+                                                         VerticalOptions="Center"/>
+                                    <StackLayout Grid.Column="1"
+                                                 Orientation="Horizontal"
+                                                 VerticalOptions="Center">
+                                        <Label Text="{Binding ControllerEvent.EventCode}"
+                                               FontSize="Large"
+                                               FontAttributes="Bold"/>
                                     </StackLayout>
                                 </Grid>
                             </SwipeView>
@@ -79,27 +89,45 @@
                             <SwipeView>
                                 <SwipeView.LeftItems>
                                     <SwipeItems Mode="Execute">
-                                        <SwipeItem Text="{extensions:Translate Delete}" IconImageSource="{extensions:ImageResource Source=ic_delete.png}" BackgroundColor="{DynamicResource DeleteSwipeItemBackgroundColor}" Command="{Binding BindingContext.DeleteControllerActionCommand, Source={x:Reference Page}}" CommandParameter="{Binding ControllerAction}"/>
+                                        <SwipeItem Text="{extensions:Translate Delete}"
+                                                   IconImageSource="{extensions:ImageResource Source=ic_delete.png}"
+                                                   BackgroundColor="{DynamicResource DeleteSwipeItemBackgroundColor}"
+                                                   Command="{Binding BindingContext.DeleteControllerActionCommand, Source={x:Reference Page}}"
+                                                   CommandParameter="{Binding ControllerAction}"/>
                                     </SwipeItems>
                                 </SwipeView.LeftItems>
                                 <Grid Style="{StaticResource CollectionItemGridStyle}">
                                     <Grid.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding BindingContext.ControllerActionTappedCommand, Source={x:Reference Page}}" CommandParameter="{Binding .}"/>
+                                        <TapGestureRecognizer Command="{Binding BindingContext.ControllerActionTappedCommand, Source={x:Reference Page}}"
+                                                              CommandParameter="{Binding .}"/>
                                     </Grid.GestureRecognizers>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto"/>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <controls:ColorImage Grid.Column="0" Source="{extensions:ImageResource Source=ic_exclamation_mark.png}" Color="{DynamicResource NegativeColor}" IsVisible="{Binding ControllerActionValid, Converter={StaticResource InverseBool}}" WidthRequest="30" HeightRequest="30" VerticalOptions="Center"/>
-                                    <HorizontalStackLayout Grid.Column="1" VerticalOptions="Center" Margin="0,4" Spacing="6">
+                                    <controls:ColorImage Grid.Column="0"
+                                                         Source="{extensions:ImageResource Source=ic_exclamation_mark.png}"
+                                                         Color="{DynamicResource NegativeColor}"
+                                                         IsVisible="{Binding ControllerActionValid, Converter={StaticResource InverseBool}}"
+                                                         WidthRequest="30"
+                                                         HeightRequest="30"
+                                                         VerticalOptions="Center"/>
+                                    <HorizontalStackLayout Grid.Column="1"
+                                                           VerticalOptions="Center"
+                                                           Margin="0,4"
+                                                           Spacing="6">
                                         <Label Text="{extensions:Translate Device}"/>
                                         <Label Text=": "/>
-                                        <Label Text="{Binding DeviceName}" FontAttributes="Bold"/>
+                                        <Label Text="{Binding DeviceName}"
+                                               FontAttributes="Bold"/>
                                         <Label Text="{extensions:Translate ShortChannel}"/>
                                         <Label Text=": "/>
-                                        <controls:DeviceChannelLabel DeviceType="{Binding DeviceType}" Channel="{Binding Channel}" FontAttributes="Bold"/>
+                                        <controls:DeviceChannelLabel DeviceType="{Binding DeviceType}"
+                                                                     Channel="{Binding Channel}"
+                                                                     FontAttributes="Bold"/>
                                         <Label Text=" - "/>
-                                        <Label Text="{Binding InvertName}" FontAttributes="Bold"/>
+                                        <Label Text="{Binding InvertName}"
+                                               FontAttributes="Bold"/>
                                     </HorizontalStackLayout>
                                 </Grid>
                             </SwipeView>
@@ -107,15 +135,25 @@
                     </CollectionView.ItemTemplate>
 
                     <CollectionView.EmptyView>
-                        <Label Text="{extensions:Translate AddControllerEvents}" Style="{StaticResource CollectionViewEmptyLabelStyle}"/>
+                        <Label Text="{extensions:Translate AddControllerEvents}"
+                               Style="{StaticResource CollectionViewEmptyLabelStyle}"/>
                     </CollectionView.EmptyView>
                 </CollectionView>
 
-                <controls:FloatingActionButton Grid.Row="0" Grid.RowSpan="2" ButtonColor="Red" ImageSource="{extensions:ImageResource Source=ic_add.png}" ImageColor="White" Command="{Binding AddControllerEventCommand}" HorizontalOptions="End" VerticalOptions="End" Margin="10"/>
+                <controls:FloatingActionButton Grid.Row="0"
+                                               ButtonColor="Red"
+                                               ImageSource="{extensions:ImageResource Source=ic_add.png}"
+                                               ImageColor="White"
+                                               Command="{Binding AddControllerEventCommand}"
+                                               HorizontalOptions="End"
+                                               VerticalOptions="End"
+                                               Margin="10"/>
 
             </Grid>
 
-            <controls:Dialogs x:Name="Dialogs" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All"/>
+            <controls:Dialogs x:Name="Dialogs"
+                              AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                              AbsoluteLayout.LayoutFlags="All"/>
 
         </AbsoluteLayout>
     </local:PageBase.Content>

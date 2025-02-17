@@ -121,7 +121,7 @@
     <value>Über</value>
   </data>
   <data name="AddControllerEvents" xml:space="preserve">
-    <value>Controller-event</value>
+    <value>Keine Controller-Aktionen vorhanden.</value>
   </data>
   <data name="AddControllerProfiles" xml:space="preserve">
     <value>Controllerprofile erstellen</value>
