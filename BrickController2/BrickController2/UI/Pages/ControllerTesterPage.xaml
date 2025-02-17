@@ -13,43 +13,63 @@
 
     <local:PageBase.Padding>
         <OnPlatform x:TypeArguments="Thickness">
-            <On Platform="iOS" Value="0, 20, 0, 0" />
-            <On Platform="Android" Value="0, 0, 0, 0" />
+            <On Platform="iOS"
+                    Value="0, 20, 0, 0"/>
+            <On Platform="Android"
+                    Value="0, 0, 0, 0"/>
         </OnPlatform>
     </local:PageBase.Padding>
 
     <NavigationPage.TitleView>
         <Grid HorizontalOptions="FillAndExpand">
-            <Label Text="{extensions:Translate ControllerTester}" TextColor="{DynamicResource NavigationBarItemColor}" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="Start" VerticalOptions="Center"/>
+            <Label Text="{extensions:Translate ControllerTester}"
+                    TextColor="{DynamicResource NavigationBarItemColor}"
+                    FontSize="Large"
+                    FontAttributes="Bold"
+                    HorizontalOptions="Start"
+                    VerticalOptions="Center"/>
         </Grid>
     </NavigationPage.TitleView>
 
     <local:PageBase.Content>
-        <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-            <Grid RowSpacing="0" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All">
+        <AbsoluteLayout HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand">
+            <Grid RowSpacing="0"
+                    AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                    AbsoluteLayout.LayoutFlags="All">
 
                 <!-- Controller event list -->
-                <CollectionView ItemsSource="{Binding ControllerEventList}" SelectionMode="None">
+                <CollectionView ItemsSource="{Binding ControllerEventList}"
+                        SelectionMode="None">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            <StackLayout Orientation="Vertical" Padding="10">
+                            <StackLayout Orientation="Vertical"
+                                    Padding="10">
                                 <StackLayout Orientation="Horizontal">
-                                    <Label Text="{Binding EventCode}" FontSize="Large" FontAttributes="Bold"/>
-                                    <Label Text=" - " FontSize="Large"/>
-                                    <Label Text="{Binding Value}" FontSize="Large"/>
+                                    <Label Text="{Binding EventCode}"
+                                            FontSize="Large"
+                                            FontAttributes="Bold"/>
+                                    <Label Text=" - "
+                                            FontSize="Large"/>
+                                    <Label Text="{Binding Value}"
+                                            FontSize="Large"/>
                                 </StackLayout>
-                                <Label Text="{Binding EventType}" FontSize="Medium"/>
+                                <Label Text="{Binding EventType}"
+                                        FontSize="Medium"/>
                             </StackLayout>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                     <CollectionView.EmptyView>
-                        <Label Text="{extensions:Translate PressButtonsOrMoveJoys}" Style="{StaticResource CollectionViewEmptyLabelStyle}"/>
+                        <Label Text="{extensions:Translate PressButtonsOrMoveJoys}"
+                                Style="{StaticResource CollectionViewEmptyLabelStyle}"/>
                     </CollectionView.EmptyView>
                 </CollectionView>
 
             </Grid>
 
-            <controls:Dialogs x:Name="Dialogs" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All"/>
+            <controls:Dialogs x:Name="Dialogs"
+                    AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                    AbsoluteLayout.LayoutFlags="All"/>
 
         </AbsoluteLayout>
     </local:PageBase.Content>

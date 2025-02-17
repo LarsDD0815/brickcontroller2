@@ -13,33 +13,19 @@
     ios:Page.UseSafeArea="True"
     BackgroundColor="{DynamicResource PageBackgroundColor}">
 
-    <local:PageBase.Resources>
-        <ResourceDictionary>
-            <converters:TextToCapitalInitialConverter x:Key="TextToCapitalInitial"/>
-            <converters:IntToColorConverter x:Key="IntToColor"/>
-        </ResourceDictionary>
-    </local:PageBase.Resources>
-
-    <NavigationPage.TitleView>
+    <NavigationPage.TitleView Margin="0"
+                              Padding="0">
         <Grid HorizontalOptions="FillAndExpand">
             <Label Text="{extensions:Translate Creations}"
                    TextColor="{DynamicResource NavigationBarItemColor}"
                    FontSize="Large"
                    FontAttributes="Bold"
-                   VerticalOptions="Center"/>
-            <HorizontalStackLayout HorizontalOptions="End"
-                                   Spacing="12">
-                <controls:ImageButton ImageSource="{extensions:ImageResource Source=ic_import.png}"
-                                      Command="{Binding ImportCreationCommand}"
-                                      Style="{StaticResource NavigationBarImageButtonStyle}"
-                                      IsVisible="{Binding SharedFileStorageService.IsSharedStorageAvailable}"/>
-                <controls:ImageButton ImageSource="{extensions:ImageResource Source=ic_sequence.png}"
-                                      Command="{Binding NavigateToSequencesCommand}"
-                                      Style="{StaticResource NavigationBarImageButtonStyle}"/>
-                <controls:ImageButton ImageSource="{extensions:ImageResource Source=ic_settings.png}"
-                                      Command="{Binding OpenSettingsPageCommand}"
-                                      Style="{StaticResource NavigationBarImageButtonStyle}"/>
-            </HorizontalStackLayout>
+                   VerticalOptions="Center"
+                   HorizontalOptions="FillAndExpand"/>
+            <controls:ImageButton ImageSource="{extensions:ImageResource Source=ic_settings.png}"
+                                  Command="{Binding OpenSettingsPageCommand}"
+                                  Style="{StaticResource NavigationBarImageButtonStyle}"
+                                  HorizontalOptions="End"/>
         </Grid>
     </NavigationPage.TitleView>
 
@@ -66,8 +52,7 @@
                                     </SwipeItems>
                                 </SwipeView.RightItems>
                                 <VerticalStackLayout>
-                                    <Grid Style="{StaticResource CollectionItemGridStyle}"
-                                          Margin="0,0">
+                                    <Grid Style="{StaticResource CollectionItemGridStyle}">
                                         <Label
                                             Text="{Binding Name}"
                                             FontSize="Large"

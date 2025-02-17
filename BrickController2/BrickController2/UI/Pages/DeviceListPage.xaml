@@ -21,54 +21,84 @@
 
     <NavigationPage.TitleView>
         <Grid HorizontalOptions="FillAndExpand">
-            <Label Text="{extensions:Translate Devices}" TextColor="{DynamicResource NavigationBarItemColor}" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="Start" VerticalOptions="Center"/>
+            <Label Text="{extensions:Translate Devices}"
+                   TextColor="{DynamicResource NavigationBarItemColor}"
+                   FontSize="Large"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Start"
+                   VerticalOptions="Center"/>
         </Grid>
     </NavigationPage.TitleView>
 
     <local:PageBase.Content>
-        <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-            <Grid RowSpacing="0" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All">
+        <AbsoluteLayout HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand">
+            <Grid RowSpacing="0"
+                  AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                  AbsoluteLayout.LayoutFlags="All">
 
                 <!-- Device list -->
-                <CollectionView ItemsSource="{Binding DeviceManager.Devices}" SelectionMode="None">
+                <CollectionView ItemsSource="{Binding DeviceManager.Devices}"
+                                SelectionMode="None">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <SwipeView>
                                 <SwipeView.LeftItems>
                                     <SwipeItems Mode="Execute">
-                                        <SwipeItem Text="{extensions:Translate Delete}" IconImageSource="{extensions:ImageResource Source=ic_delete.png}" BackgroundColor="{DynamicResource DeleteSwipeItemBackgroundColor}" Command="{Binding BindingContext.DeleteDeviceCommand, Source={x:Reference Page}}" CommandParameter="{Binding .}"/>
+                                        <SwipeItem Text="{extensions:Translate Delete}"
+                                                   IconImageSource="{extensions:ImageResource Source=ic_delete.png}"
+                                                   BackgroundColor="{DynamicResource DeleteSwipeItemBackgroundColor}"
+                                                   Command="{Binding BindingContext.DeleteDeviceCommand, Source={x:Reference Page}}"
+                                                   CommandParameter="{Binding .}"/>
                                     </SwipeItems>
                                 </SwipeView.LeftItems>
                                 <VerticalStackLayout>
                                     <Grid Style="{StaticResource CollectionItemGridStyle}">
                                         <Grid.GestureRecognizers>
-                                            <TapGestureRecognizer Command="{Binding BindingContext.DeviceTappedCommand, Source={x:Reference Page}}" CommandParameter="{Binding .}"/>
+                                            <TapGestureRecognizer Command="{Binding BindingContext.DeviceTappedCommand, Source={x:Reference Page}}"
+                                                                  CommandParameter="{Binding .}"/>
                                         </Grid.GestureRecognizers>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="Auto"/>
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
-                                        <Image Grid.Column="0" Source="{Binding DeviceType, Converter={StaticResource DeviceTypeToSmallImage}}" WidthRequest="50" HeightRequest="50"/>
+                                        <Image Grid.Column="0"
+                                               Source="{Binding DeviceType, Converter={StaticResource DeviceTypeToSmallImage}}"
+                                               WidthRequest="50"
+                                               HeightRequest="50"/>
                                         <VerticalStackLayout Grid.Column="1">
-                                            <Label Text="{Binding Name}" FontSize="Large" FontAttributes="Bold"/>
-                                            <Label Text="{Binding Address}" FontSize="Micro"/>
+                                            <Label Text="{Binding Name}"
+                                                   FontSize="Large"
+                                                   FontAttributes="Bold"/>
+                                            <Label Text="{Binding Address}"
+                                                   FontSize="Micro"/>
                                         </VerticalStackLayout>
                                     </Grid>
-                                    <BoxView Style="{StaticResource DividerBoxViewStyle}" Margin="6,6,6,0"/>
+                                    <BoxView Style="{StaticResource DividerBoxViewStyle}"
+                                             Margin="6,6,6,0"/>
                                 </VerticalStackLayout>
                             </SwipeView>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                     <CollectionView.EmptyView>
-                        <Label Text="{extensions:Translate PressScanToDiscoverDevices}" Style="{StaticResource CollectionViewEmptyLabelStyle}"/>
+                        <Label Text="{extensions:Translate PressScanToDiscoverDevices}"
+                               Style="{StaticResource CollectionViewEmptyLabelStyle}"/>
                     </CollectionView.EmptyView>
                 </CollectionView>
 
-                <controls:FloatingActionButton ButtonColor="Red" ImageSource="{extensions:ImageResource Source=ic_search.png}" ImageColor="White" Command="{Binding ScanCommand}" HorizontalOptions="End" VerticalOptions="End" Margin="10"/>
+                <controls:FloatingActionButton ButtonColor="Red"
+                                               ImageSource="{extensions:ImageResource Source=ic_search.png}"
+                                               ImageColor="White"
+                                               Command="{Binding ScanCommand}"
+                                               HorizontalOptions="End"
+                                               VerticalOptions="End"
+                                               Margin="10"/>
 
             </Grid>
 
-            <controls:Dialogs x:Name="Dialogs" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All"/>
+            <controls:Dialogs x:Name="Dialogs"
+                              AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                              AbsoluteLayout.LayoutFlags="All"/>
 
         </AbsoluteLayout>
     </local:PageBase.Content>

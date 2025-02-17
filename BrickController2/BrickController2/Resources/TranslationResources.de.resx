@@ -403,10 +403,10 @@
     <value>Eine Taste drücken oder einen Joystick auf dem Controller bewegen</value>
   </data>
   <data name="PressButtonsOrMoveJoys" xml:space="preserve">
-    <value>Tasten drücken oder Joysticks bewegen</value>
+    <value>Tasten drücken oder Joysticks bewegen!</value>
   </data>
   <data name="PressScanToDiscoverDevices" xml:space="preserve">
-    <value>Auf Scannen drücken, um Geräte zu finden</value>
+    <value>Keine Geräte verbunden.</value>
   </data>
   <data name="ProfileLoadSaveWillNotBeAvailable" xml:space="preserve">
     <value>Laden und Speichern von Profilen ist nicht erreichbar.</value>
