@@ -577,7 +577,7 @@ namespace BrickController2.DeviceManagement
             }
            
             buffer[35] = 3; // DeadbandOut - default: 2 (position servo) / 2 (speed servo)
-            buffer[36] = 3; // DeadbandOutBoost - default: 2 (position servo) / 2 (speed servo)
+            buffer[36] = 0; // DeadbandOutBoost - default: 2 (position servo) / 2 (speed servo)
             buffer.SetFloat(20f, 26); // Liml - default: 20 (position servo) / 127 (speed servo)
             buffer[34] = 127; // limOut - default: 20 (position servo) / 127 (speed servo)
             buffer.SetFloat(50f, 30); // Reference rate limit - default: N/A (position servo) / N/A (speed servo)
