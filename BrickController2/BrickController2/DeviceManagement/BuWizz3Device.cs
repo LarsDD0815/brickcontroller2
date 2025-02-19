@@ -85,11 +85,11 @@ namespace BrickController2.DeviceManagement
                     _lastOutputValues[channel] = 0;
                 }
             }
-            
+
             lock (_positionLock)
             {
                 // process only PU ports
-                for (int channel = 0; channel < NUMBER_OF_PU_PORTS; channel++)                
+                for (int channel = 0; channel < NUMBER_OF_PU_PORTS; channel++)
                 {
                     var channelConfig = channelConfigurations.FirstOrDefault(c => c.Channel == channel);
 
@@ -257,16 +257,16 @@ namespace BrickController2.DeviceManagement
             try
             {
                 lock (_outputLock)
-                lock (_positionLock)
-                {
-                    for (int channel = 0; channel < NumberOfChannels; channel++)
+                    lock (_positionLock)
                     {
-                        _outputValues[channel] = 0;
-                        _lastOutputValues[channel] = 1;
-                    }
+                        for (int channel = 0; channel < NumberOfChannels; channel++)
+                        {
+                            _outputValues[channel] = 0;
+                            _lastOutputValues[channel] = 1;
+                        }
 
-                    _sendAttemptsLeft = MAX_SEND_ATTEMPTS;
-                }
+                        _sendAttemptsLeft = MAX_SEND_ATTEMPTS;
+                    }
 
                 while (!token.IsCancellationRequested)
                 {
@@ -566,17 +566,21 @@ namespace BrickController2.DeviceManagement
 
             buffer[0] = 0x53;
             buffer[1] = (byte)channel;
-            buffer.SetFloat(0.5f, 14); // Kp
-            buffer.SetFloat(0.01f, 18); // Ki
-            buffer.SetFloat(-1f, 22); // Kd
-            buffer.SetFloat(0f, 2); // outLP
-            buffer.SetFloat(0f, 6); // D_LP
-            buffer.SetFloat(0.6f, 10); // speed_LP
-            buffer[35] = 5; // DeadbandOut
-            buffer[36] = 10; // DeadbandOutBoost
-            buffer.SetFloat(20f, 26); // Liml
-            buffer[34] = 127; // limOut
-            buffer.SetFloat(50f, 30); // Reference rate limit
+            buffer.SetFloat(0.8f, 14); // Kp - default: 0.4 (position servo) / 0.8 (speed servo)
+            buffer.SetFloat(0.06f, 18); // Ki - default: 0.01 (position servo) / 0.06 (speed servo)
+            buffer.SetFloat(-3f, 22); // Kd - default: -0.8 (position servo) / -3 (speed servo)
+            buffer.SetFloat(0.5f, 2); // outLP - default: 0 (position servo) / 0.5 (speed servo)
+            buffer.SetFloat(0.5f, 6); // D_LP - default: 0.9 (position servo) / 0.5 (speed servo)
+            if (!isServo)
+            {
+                buffer.SetFloat(0.6f, 10); // speed_LP - default: / (position servo) / 0.9 (speed servo)
+            }
+           
+            buffer[35] = 3; // DeadbandOut - default: 2 (position servo) / 2 (speed servo)
+            buffer[36] = 3; // DeadbandOutBoost - default: 2 (position servo) / 2 (speed servo)
+            buffer.SetFloat(20f, 26); // Liml - default: 20 (position servo) / 127 (speed servo)
+            buffer[34] = 127; // limOut - default: 20 (position servo) / 127 (speed servo)
+            buffer.SetFloat(50f, 30); // Reference rate limit - default: N/A (position servo) / N/A (speed servo)
             buffer[37] = isServo ? (byte)0x15 : (byte)0x10; // valid mode (equal to port mode selected)
 
             var result = await _bleDevice!.WriteAsync(_characteristic!, buffer, token).ConfigureAwait(false);
