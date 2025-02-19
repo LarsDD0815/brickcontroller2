@@ -66,6 +66,9 @@ namespace BrickController2.DeviceManagement
 
         public override bool CanChangeOutputType(int channel) => channel < NUMBER_OF_PU_PORTS;
 
+
+        public override bool CanChangeMaxServoAngle(int channel) => true;
+
         public async override Task<DeviceConnectionResult> ConnectAsync(
             bool reconnect,
             Action<Device> onDeviceDisconnected,
@@ -563,17 +566,17 @@ namespace BrickController2.DeviceManagement
 
             buffer[0] = 0x53;
             buffer[1] = (byte)channel;
-            buffer.SetFloat(0f, 2); // outLP
-            buffer.SetFloat(0f, 6); // D_LP
-            buffer.SetFloat(0.6f, 10); // speed_LP
             buffer.SetFloat(0.5f, 14); // Kp
             buffer.SetFloat(0.01f, 18); // Ki
             buffer.SetFloat(-1f, 22); // Kd
-            buffer.SetFloat(20f, 26); // Liml
-            buffer.SetFloat(50f, 30); // Reference rate limit
-            buffer[34] = 127; // limOut
+            buffer.SetFloat(0f, 2); // outLP
+            buffer.SetFloat(0f, 6); // D_LP
+            buffer.SetFloat(0.6f, 10); // speed_LP
             buffer[35] = 5; // DeadbandOut
             buffer[36] = 10; // DeadbandOutBoost
+            buffer.SetFloat(20f, 26); // Liml
+            buffer[34] = 127; // limOut
+            buffer.SetFloat(50f, 30); // Reference rate limit
             buffer[37] = isServo ? (byte)0x15 : (byte)0x10; // valid mode (equal to port mode selected)
 
             var result = await _bleDevice!.WriteAsync(_characteristic!, buffer, token).ConfigureAwait(false);
